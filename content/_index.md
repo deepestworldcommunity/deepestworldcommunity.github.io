@@ -9,3 +9,4 @@ draft: false
 
 * [Introduction](/introduction)
 * [Getting Started](/getting-started)
+* [Items](/items)

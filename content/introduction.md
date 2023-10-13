@@ -46,33 +46,9 @@ The last row `dw.character.bag[32 - 39]` can be used to combine stackable items 
 
 There are different types of items: 
 * armor
-  * helmet
-  * chest-plate
-  * gloves
-  * boots
-  * shield
 * weapons
-  * axe
-  * boomerang
-  * bow
-  * crossbow
-  * dagger
-  * mace
-  * scepter
-  * spear
-  * staff
-  * sword
-  * wand
 * accessories
-  * amulet
-  * ring
-  * belt
 * gems
-  * diamond
-  * emerald
-  * ruby
-  * sapphire
-  * topaz
 * skills
 * crafting materials
 * stations
@@ -98,3 +74,19 @@ Whether your character can equip a shield depends on the weapon type equipped -
 bows and crossbows require two hands and thus do not allow a shield to be equipped.
 When equipping a shield your character gains the benefits from the shield, 
 but also will automatically do a percentage less damage. 
+
+### Gem Pyramid
+
+Things become interesting at level 2. At this level and on every other levels your character 
+gains will provide an extra gem slot. In time, it will form into a pyramid. You can access
+it via pressing the `P` key.
+
+### Skillbar
+
+At the bottom of the screen is the skill bar. It behaves like a regular inventory slots
+but the main purpose is to put skills there. Your character can cast them if it has enough
+mp. There are 8 slots that can be used by the keys `1` - `8`.
+
+## Custom Keybindings
+
+You can change all the mentioned keybindings in the menu.
