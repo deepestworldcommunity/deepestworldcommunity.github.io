@@ -1,0 +1,4 @@
+baseURL = 'https://deepestworldcommunity.github.io/'
+languageCode = 'en-us'
+title = 'Deepest World Community'
+theme = 'hugo-book'
