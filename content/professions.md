@@ -26,3 +26,8 @@ draft: false
   * staffsmith
   * swordsmith
   * wandsmith
+
+---
+
+* TODO: mention skilling limitiations
+* TODO: mention benefit for rerolling items

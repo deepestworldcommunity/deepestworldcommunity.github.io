@@ -15,3 +15,8 @@ draft: false
 * staff
 * sword
 * wand
+
+---
+
+* TODO: explain weapon differences
+* TODO: explain local vs. global mods and what to focus on
