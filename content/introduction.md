@@ -1,8 +1,6 @@
 ---
 title: "Introduction"
-date: 2023-09-03T00:00:00+02:00
 draft: false
-bookToc: true
 ---
 # Introduction
 
@@ -73,7 +71,9 @@ Each item slot only allows to put an item of the dedicated item type into it.
 Whether your character can equip a shield depends on the weapon type equipped - 
 bows and crossbows require two hands and thus do not allow a shield to be equipped.
 When equipping a shield your character gains the benefits from the shield, 
-but also will automatically do a percentage less damage. 
+but also will automatically do a percentage less damage.
+
+For more information see [armor](/armor), [weapons](/weapons) or [accessories](/accessories).
 
 ### Gem Pyramid
 
@@ -81,11 +81,15 @@ Things become interesting at level 2. At this level and on every other levels yo
 gains will provide an extra gem slot. In time, it will form into a pyramid. You can access
 it via pressing the `P` key.
 
+For more information see [gems](/gems).
+
 ### Skillbar
 
 At the bottom of the screen is the skill bar. It behaves like a regular inventory slots
 but the main purpose is to put skills there. Your character can cast them if it has enough
 mp. There are 8 slots that can be used by the keys `1` - `8`.
+
+For more information see [skills](/skills).
 
 ## Custom Keybindings
 

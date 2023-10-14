@@ -1,8 +1,6 @@
 ---
 title: "Getting Started"
-date: 2023-09-04T00:00:00+02:00
 draft: false
-bookToc: true
 ---
 # Getting Started
 
@@ -68,12 +66,25 @@ If you run that code for a while you'll notice obvious issues:
 * the character just attacks any monster it sees
 * the character doesn't seem to care how injured it already is and persists attacking
 * if nothing is in sight the character just stands around and does nothing
-* if the closest monster is behind a wall the character gets stuck
+* if the closest monster is behind a wall or tree the character gets stuck
 
-You can work on any of those issues. But if you haven't found a weapon or an armor piece 
-for each slot you could start chopping some tree. After you chopped some trees you can put
-one of the wood to the ground. Right click on it in the inventory and place it into the world
-you might have to get farther away from the spawning spot at 0,0,0 to do so. When the wood
-is placed down you can use it to craft a workbench. When you put that one down as well you 
-can craft a weapon of your choosing and an armor piece (helmet, chest-plate, gloves, boots)
-for every empty slot.
+You can work on any of those issues. Additional suggestions would be:
+* separate moving & attacking into different loops
+* add moving skills into the mix
+* move from `setInverval` to `setTimeout`, especially for the skills bound to the global cooldown
+
+But you can also look into improving your gear and ignore that for the moment.
+
+## Improving Gear
+
+If you haven't found a weapon or an armor piece for each slot you could start chopping (right click) some trees. 
+After you chopped some trees you can put one of the wood to the ground. Right click on it in the inventory 
+and place it into the world  you might have to get farther away from the spawning spot at 0,0,0 to do so. 
+When the wood  is placed down you can use it to craft a workbench. 
+When you put that one down as well you  can craft a weapon of your choosing and an armor piece 
+(helmet, chest-plate, gloves, boots) for every empty slot.
+
+Besides the craftable, mostly common (white) items, you should probably look for uncommon (green) items.
+Anything with `+X Life` will let your character last longer in fights, but also anything that gives you 
+any kind of flat damage will also help you kill things faster. More information on that can be found in 
+the [Battle Score](/battle-score) section. 

@@ -1,8 +1,8 @@
 ---
-title: "Items"
+title: "Skills"
 draft: false
 ---
-# Items
+# Skills
 
 * armor
     * helmet
