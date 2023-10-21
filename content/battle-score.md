@@ -64,23 +64,27 @@ However, with the square root it's around ~6500.
 For monsters this would look like this:
 
 ```js
+const BOSSES = [
+    'alarmBoss',
+    'bouncyGoo',
+    'kingGoo', 
+    'kingSpikedGoo', 
+]
+
 function getMonsterBattleScore(monster) {
     let dmg = 19 * Math.pow(1.1, monster.level)
 
     // Factor in critical hits
     dmg += 1 + 0.05 * 0.5
 
-    // Scale based on skulls on mob
-    dmg *= 1 + (monster.r ?? 0) * 0.5
+    // Scale based on skulls on mob, extra 25% for bosses
+    dmg *= 1 
+        + (monster.r ?? 0) * 0.5 
+        + (BOSSES.includes(monster.md) ? 0.25 : 0) 
 
     // Powerful mobs deal 25% more dmg
-    if (
-        monster.md.endsWith('Pow') 
-        || ['kingGoo', 'kingSpikedGoo', 'giantWasp'].includes(monster.md)
-    ) {
-        dmg *= 1.25
-    }
-    
+    dmg *= Math.pow(1.25, monster.fx?.dmgMore ?? 0)
+        
     return Math.sqrt(dmg * monster.hpMax)
 }
 ```
