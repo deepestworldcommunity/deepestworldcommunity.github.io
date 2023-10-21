@@ -59,7 +59,7 @@ function getCharacterBattleScore() {
 
 If you wonder why the square root at the end... if to keep the number relatively small, 
 but big enough to be meaningful. At level 50 the Battle Score would be around ~42,250,000.
-However, with the square root it's around ~6500.
+However, with the square root it's around ~6,500.
 
 For monsters this would look like this:
 
@@ -83,7 +83,9 @@ function getMonsterBattleScore(monster) {
         + (BOSSES.includes(monster.md) ? 0.25 : 0) 
 
     // Powerful mobs deal 25% more dmg
-    dmg *= Math.pow(1.25, monster.fx?.dmgMore ?? 0)
+    if (monster.fx?.dmgMore) {
+        dmg *= 1.25
+    }
         
     return Math.sqrt(dmg * monster.hpMax)
 }
