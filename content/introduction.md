@@ -19,7 +19,7 @@ that can also be calculated via the in-game function `dw.getZoneLevel()`:
 dw.getZoneLevel = (x, y, z) => {
     const dx = (x ?? dw.c.x) / 16;
     const dy = (y ?? dw.c.y) / 16;
-    const dz = (z ?? dw.c.z);
+    const dz = (z ?? dw.c.z) / 16;
 
     return Math.floor(1 + Math.sqrt(dx * dx + dy * dy + dz * dz));
 };
@@ -75,7 +75,7 @@ but also will automatically do a percentage less damage.
 
 For more information see [armor](/armor), [weapons](/weapons) or [accessories](/accessories).
 
-### Gem Pyramid
+### Gem Sockets
 
 Things become interesting at level 2. At this level and on every other levels your character 
 gains will provide an extra gem slot. In time, it will form into a pyramid. You can access
