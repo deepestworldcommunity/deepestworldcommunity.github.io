@@ -4,10 +4,9 @@ draft: false
 ---
 # Weapons
 
+## One Handed
 * axe
 * boomerang
-* bow
-* crossbow
 * dagger
 * mace
 * scepter
@@ -16,6 +15,11 @@ draft: false
 * sword
 * wand
 
+## Two Handed
+* bow
+* crossbow
+
+  
 ---
 
 * TODO: explain weapon differences
