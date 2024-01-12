@@ -12,6 +12,7 @@ draft: false
 * [Accessories](/accessories)
 * [Gems](/gems)
 * [Crafting Stations](/crafting-stations)
+* [Tools](/tools)
 * [Skills](/skills)
 * [Mods](/mods)
 * [Components](/components)
