@@ -7,6 +7,7 @@ draft: false
 * Gathering
   * mining
   * woodcutting
+  * plant farming
 * Building
   * metalworking
   * woodworking
@@ -26,6 +27,8 @@ draft: false
   * staffsmith
   * swordsmith
   * wandsmith
+  * leatherworking
+  * tailoring
 
 ---
 
