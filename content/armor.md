@@ -35,13 +35,14 @@ Currently, only Tier 1 is available, made from linen.
 ## Slots
 
 
-There are currently 5 armor slots, including the shield that is available while using one-handed weapons.
+There are currently six armor slots, including the shield that is available while using one-handed weapons.
 
 
 * helmet
 * chest-plate
 * gloves
 * boots
+* belt
 * shield
 
 
