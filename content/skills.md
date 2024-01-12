@@ -4,10 +4,17 @@ draft: false
 ---
 # Skills
 
-* attack
-* bolt
-* heal/lifeshield
-* movement
+* Attack
+* Magic Bolt
+* Heal
+* Lifeshield
+* Portal
+* Taunt
+* Dash
+* Charge
+* Blink
+* Greater Blink
+* Painkiller
 
 ---
 
