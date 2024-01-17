@@ -8,20 +8,33 @@ draft: false
 
 There are three primary styles of armor.
 
-### "Strength" Armor
+### "Strength" Armor: Block
 
 These are basic damage mitigations.
-These are made out of wood, bronze, iron, and steel. Different tiers have different scaling in the base stats.
+
+Different material tiers have different scaling in the base stats, these currently are:
+
+* Wood
+* Bronze
+* Iron
+* Steel
 
 ### "Dexterity" Armor: Versatility
 
 These focus on avoiding hits and reducing mana based on distance.
-Currently, only Tier 1 is available, made from rawhide.
+
+Different material tiers have different scaling in the base stats, these currently are:
+
+* Deerskin
+* Sealskin
 
 ### "Intelligence" Armor: Efficiency
 
 Focusing on a reduction in mana costs.
-Currently, only Tier 1 is available, made from linen.
+
+Different material tiers have different scaling in the base stats, these currently are:
+
+* Linen
 
 ## Slots
 
