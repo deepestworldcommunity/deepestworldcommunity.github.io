@@ -6,7 +6,7 @@ draft: false
 
 ## Armor Types
 
-There are three primary styles of armor.
+There are three primary styles of armor, this is a chance to reduce incoming damage by 50%.
 
 ### "Strength" Armor: Block
 
