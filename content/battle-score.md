@@ -65,28 +65,45 @@ For monsters this would look like this:
 
 ```js
 const BOSSES = [
-    'alarmBoss',
-    'bouncyGoo',
-    'kingGoo', 
-    'kingSpikedGoo', 
+    'kingGoo',        // Event Boss: spawned by killing goo
+    'kingSpikedGoo',  // Event Boss: spawned by killing goo
+    'alarmBoss',      // Event Boss: spawned by killing alarmOnDeath
+    'bouncyGoo',      // Event Boss: spawned by killing goo
+    'sdBoss',         // Dungeon Boss: Squirrel Den
 ]
 
-function getMonsterBattleScore(monster) {
+function getMonsterBattleScore(monster: DeepestWorld.Monster) {
     let dmg = 19 * Math.pow(1.1, monster.level)
 
     // Factor in critical hits
     dmg += 1 + 0.05 * 0.5
 
+    const skullData = monster.fx.skulls
+    let skullCount = 0
+    if (
+        skullData &&
+        typeof skullData === 'object' &&
+        's' in skullData &&
+        typeof skullData.s === 'number'
+    ) {
+        skullCount = skullData.s
+    }
+
     // Scale based on skulls on mob, extra 25% for bosses
-    dmg *= 1 
-        + (monster.r ?? 0) * 0.5 
-        + (BOSSES.includes(monster.md) ? 0.25 : 0) 
+    dmg *= 1
+        + skullCount * 0.5
+        + (BOSSES.includes(monster.md) ? 0.25 : 0)
 
     // Powerful mobs deal 25% more dmg
-    if (monster.fx?.dmgMore) {
+    if (monster.fx.dmgMore) {
         dmg *= 1.25
     }
-        
+
+    // Quick mobs attack 20% more often, thus deal more dmg
+    if (monster.fx.quick) {
+        dmg *= 1.2
+    }
+
     return Math.sqrt(dmg * monster.hpMax)
 }
 ```

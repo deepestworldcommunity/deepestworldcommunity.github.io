@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "1 Introduction"
 draft: false
 ---
 # Introduction
@@ -13,17 +13,7 @@ Besides the first impression the world has indeed three dimensions: `x`, `y`, `z
 This will always be shown in the top right corner of the game.
 The world is in theory endless.
 Every location in the game has a zone level associated (also shown in the top right) based on the coordinates, 
-that can also be calculated via the in-game function `dw.getZoneLevel()`:
-
-```js
-dw.getZoneLevel = (x, y, z) => {
-    const dx = (x ?? dw.c.x) / 16;
-    const dy = (y ?? dw.c.y) / 16;
-    const dz = (z ?? dw.c.z) / 16;
-
-    return Math.floor(1 + Math.sqrt(dx * dx + dy * dy + dz * dz));
-};
-```
+that can also be calculated via the in-game function `dw.getZoneLevel()`.
 
 ## Character
 
