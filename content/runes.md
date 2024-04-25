@@ -10,7 +10,7 @@ Rune Masters can be found in most settlements. They will provide quests that let
 In case you already have that recipe another item will be provided as a reward instead.
 Runes have tiers and higher tiers are both rarer and the quest are also harder to complete.
 
-## Tier 0
+## Tier 1
 
 The quests for those runes usually involve killing 15 of a specific type of mob.
 
@@ -29,7 +29,7 @@ The quests for those runes usually involve killing 15 of a specific type of mob.
 - **Misfortune** `misfortune`
   - Target's next action is Unlucky.
 
-## Tier 1
+## Tier 2
 
 The quests for those runes usually involve killing one 💀-elite of a specific type of mob.
 
@@ -50,7 +50,7 @@ The quests for those runes usually involve killing one 💀-elite of a specific 
 - **Painkiller** `painkiller`
   - Applies a buff on the target. They die at 0 Mana instead of 0 Life. 100% Damage is taken from Mana when at 0 Life.
 
-## Tier 2
+## Tier 3
 
 The quests for those runes usually involve killing one 💀💀-elite of a specific type of mob.
 
@@ -67,7 +67,7 @@ The quests for those runes usually involve killing one 💀💀-elite of a speci
 - **Power Surge** `powerCdRune`
   - 20% more Damage for 10 sec.
 
-## Tier 3
+## Tier 4
 
 The quests for those runes usually involve killing one 💀💀💀-elite of a specific type of mob.
 
