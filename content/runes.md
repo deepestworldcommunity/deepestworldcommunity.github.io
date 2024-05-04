@@ -14,14 +14,20 @@ Runes have tiers and higher tiers are both rarer and the quest are also harder t
 
 The quests for those runes usually involve killing 15 of a specific type of mob.
 
-- **Attack** `attackRune`
-  - Uses the weapon to attack the target.
-- **Magic Bolt** `physbolt1`
-  - Fires a bolt of magic at the target.
+- **Melee Attack** `attackRune`
+  - Uses the weapon to attack the target with a melee weapon.
+- **Ranged Attack** `rangedRune`
+  - Uses the weapon to attack the target with a ranged weapon.
+- **Spell Attack** `physbolt1`
+  - Fires a bolt of magic at the target, requires a spell weapon.
 - **Taunt** `taunt`
   - Taunts the target to attack you.
 - **Heal** `physheal1`
-  - Heals the target.
+  - Heals the target, is channeled and has a chance to fail if it was interrupted.
+- **Healing Touch** `meleeHealRune`
+  - Heals the target by poking it in melee.
+- **Healing Bolt** `rangedHealRune`
+  - Heals the target from a distance.
 - **Lifeshield** `physlifeshield1`
   - Applies a shield to the target that absorbs damage.
 - **Fortune** `fortune`
