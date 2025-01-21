@@ -1,5 +1,5 @@
 ---
-title: "3.13 Respawn"
+title: "Respawn"
 draft: false
 ---
 # Respawn

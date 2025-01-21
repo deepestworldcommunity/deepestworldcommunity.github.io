@@ -1,5 +1,5 @@
 ---
-title: "3.3 Armor"
+title: "Armor"
 draft: false
 ---
 # Armor
@@ -47,7 +47,7 @@ There are currently six armor slots, including the shield that is available whil
 * belt
 * shield
 
-The shield is special here: though you gain the stats of the shield, you'll loose damage at the same time. So it's not always beneficial to equip a shield.
+The shield is special here: though you gain the stats of the shield, you'll lose damage at the same time. So it's not always beneficial to equip a shield.
 
 ---
 

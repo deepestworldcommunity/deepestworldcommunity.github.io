@@ -1,5 +1,5 @@
 ---
-title: "3.12 Base Building"
+title: "Base Building"
 draft: false
 ---
 # Base Building

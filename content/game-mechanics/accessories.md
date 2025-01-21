@@ -1,5 +1,5 @@
 ---
-title: "3.4 Accessories"
+title: "Accessories"
 draft: false
 ---
 # Accessories

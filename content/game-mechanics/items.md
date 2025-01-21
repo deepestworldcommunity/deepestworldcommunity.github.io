@@ -1,5 +1,5 @@
 ---
-title: "3.1 Items"
+title: "Items"
 draft: false
 ---
 # Items

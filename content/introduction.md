@@ -1,5 +1,5 @@
 ---
-title: "1 Introduction"
+title: "Introduction"
 draft: false
 ---
 # Introduction
@@ -63,7 +63,7 @@ bows and crossbows require two hands and thus do not allow a shield to be equipp
 When equipping a shield your character gains the benefits from the shield, 
 but also will automatically do a percentage less damage.
 
-For more information see [armor](/armor), [weapons](/weapons) or [accessories](/accessories).
+For more information see [armor](/game-mechanics/armor), [weapons](/game-mechanics/weapons) or [accessories](/game-mechanics/accessories).
 
 ### Gem Sockets
 
@@ -71,7 +71,7 @@ Things become interesting at level 2. At this level and on every other levels yo
 gains will provide an extra gem slot. In time, it will form into a pyramid. You can access
 it via pressing the `P` key.
 
-For more information see [gems](/gems).
+For more information see [gems](/game-mechanics/gems).
 
 ### Skillbar
 
@@ -79,7 +79,7 @@ At the bottom of the screen is the skill bar. It behaves like a regular inventor
 but the main purpose is to put skills there. Your character can cast them if it has enough
 mp. There are 8 slots that can be used by the keys `1` - `8`.
 
-For more information see [skills](/skills).
+For more information see [skills](/game-mechanics/skills).
 
 ## Custom Keybindings
 

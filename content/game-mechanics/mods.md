@@ -1,5 +1,5 @@
 ---
-title: "3.10 Mods"
+title: "Mods"
 draft: false
 ---
 # Mods

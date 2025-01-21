@@ -1,5 +1,5 @@
 ---
-title: "2 Getting Started"
+title: "Getting Started"
 draft: false
 ---
 # Getting Started

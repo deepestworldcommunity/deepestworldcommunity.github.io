@@ -1,5 +1,5 @@
 ---
-title: "3.14 Professions"
+title: "Professions"
 draft: false
 ---
 # Professions

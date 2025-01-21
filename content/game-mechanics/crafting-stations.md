@@ -1,5 +1,5 @@
 ---
-title: "3.6 Crafting Stations"
+title: "Crafting Stations"
 draft: false
 ---
 # Crafting Stations

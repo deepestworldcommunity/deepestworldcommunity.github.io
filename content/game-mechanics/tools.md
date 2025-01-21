@@ -1,5 +1,5 @@
 ---
-title: "3.7 Tools"
+title: "Tools"
 draft: false
 ---
 # Tools

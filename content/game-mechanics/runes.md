@@ -1,5 +1,5 @@
 ---
-title: "3.15 Runes"
+title: "Runes"
 draft: false
 ---
 # Runes
