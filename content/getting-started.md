@@ -1,6 +1,7 @@
 ---
 title: "Getting Started"
 draft: false
+weight: 3
 ---
 # Getting Started
 

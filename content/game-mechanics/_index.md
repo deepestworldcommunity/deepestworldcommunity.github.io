@@ -1,6 +1,7 @@
 ---
 title: "Game Mechanics"
 draft: false
+weight: 4
 ---
 # Game Mechanics
 

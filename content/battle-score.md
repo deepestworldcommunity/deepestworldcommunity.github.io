@@ -1,6 +1,7 @@
 ---
 title: "Battle Score"
 draft: false
+weight: 5
 ---
 # Battle Score
 
