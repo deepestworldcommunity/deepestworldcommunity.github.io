@@ -5,7 +5,7 @@ draft: false
 # Introduction
 
 So you want to learn how to make a game AI? Or maybe programming in general?
-Already know JavaScript, then head over to the [First Steps](first-steps).
+Already know JavaScript, then head over to the [First Steps](/tutorial/first-steps).
 
 Computer code is a set of instructions that a computer can execute. It reads input, does some processing, and then outputs a result.
 
@@ -187,4 +187,4 @@ We didn't cover everything yet, but this should give you a good start.
 If you want to learn more about JavaScript, you can check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript). 
 They have a lot of resources on JavaScript and web development in general.
 
-But we are here do program for DeepestWorld, so lets move on to the next tutorial: [First Steps](first-steps).
+But we are here do program for DeepestWorld, so lets move on to the next tutorial: [First Steps](/tutorial/first-steps).

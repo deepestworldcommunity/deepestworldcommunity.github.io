@@ -4,5 +4,5 @@ draft: false
 ---
 # Tutorial
 
-* [Introduction](introduction)
-* [First Steps](first-steps)
+* [Introduction](/tutorial/introduction)
+* [First Steps](/tutorial/first-steps)
