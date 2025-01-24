@@ -3,7 +3,7 @@ title: "Introduction"
 draft: false
 weight: 1
 ---
-# Introduction
+# **Introduction**
 
 So you want to learn how to make a game AI? Or maybe programming in general?
 Already know JavaScript, then head over to the [First Steps](/tutorial/first-steps).
@@ -39,7 +39,7 @@ To debug entities there is also the in-game "Inspector".
 This window can be opened by hovering over the entity in question and pressing `E`. 
 You will see details for this entity.  
 
-## Variables and datatypes
+## **Variables and datatypes**
 
 Let's move on to variables. A variable is a container for a value. You can think of it as a box that holds a value. 
 You can give it a name and assign a value to it. Here is an example:
@@ -72,7 +72,7 @@ dw.log(`The answer to life, the universe, and everything is ${number}.`);
 
 The `const` keyword is used to define a constant variable. This means that the value of the variable cannot be changed after it has been defined. The `let` keyword is used to define a variable that can be changed.
 
-## Comments
+## **Comments**
 
 The `//` is used to write comments in JavaScript. Comments are ignored by the computer and are used to explain the code to other programmers.
 There are also multi-line comments that are written between `/*` and `*/` like this.
@@ -99,7 +99,6 @@ const isTrue = true;
 JSDoc comments are used to document your code. They are written between `/**` and `*/`. They can be used to document variables, functions, and classes. They can also be used for type hinting, which is useful for debugging and code completion.
 JavaScript is a dynamically typed language, which means that you don't have to specify the type of a variable when you define it. However, you can use JSDoc comments to specify the type of a variable.
 
-Lets' move on to functions. A function is a block of code that can be called by name. It can take input, do some processing, and return a result. Here is an example:
 
 ```js
 /**
@@ -116,33 +115,83 @@ console.log(greeting("World"));
 
 The JSDoc comment above the function is completely optional, but it is good practice to document your code. It specifies that the function takes a string as input and returns a string as output.
 
-## Functions
+## **Functions**
 
-Functions can also be defined as arrow functions. Here is an example:
+Lets' move on to functions. A function is a block of code that can be called by name. It can take input, do some processing, and return a result. Here is an example:
+Function
 
+### Declaring functions
+
+Using keyword function:
 ```js
-/**
- * This is an arrow function that takes a name as input and returns a greeting.
- * @param {string} name
- * @returns {string}
- */
-const greeting = (name) => {
-  return `Hello ${name}!`;
+function greeting() {
+  console.log(`Hello!`)
+}
+```
+
+Using variables as functions:
+Functions can take parameters inside `()`.
+```js
+const greeting = function(parameter){
+  console.log(`Hello ${parameter}!`)
+}
+```
+
+Using arrow functions:
+Functions can take more than one parameters.
+```js
+const greeting = (param1, param2) => {
+  console.log(`Hello ${param1} ${param2}!`);
 };
 ```
 
-They can be written in a more concise way if they only have one statement. Here is an example:
+### return statement
+
+The return statement can return any value, including numbers, strings, objects, arrays, and more...
 
 ```js
-/**
- * This is an arrow function that takes a name as input and returns a greeting.
- * @param {string} name
- * @returns {string}
- */
-const greeting = (name) => `Hello ${name}!`;
+function greeting(param1, param2) {
+  return `Hello ${param1} ${param2}!`
+}
 ```
 
-## Arrays
+Arrow functions can be written in a more concise way if they only have one statement. Here is an example:
+```js
+const greeting = (param1, param2) => `Hello ${param1} ${param2}!`;
+```
+*When a return statement is encountered, the function execution stops immediately. 
+So it possible to have more than 1 return statement, but only one can be encountered*
+```js
+function checkNumber(number){
+  if(number == 0) {
+    return (`${number}! is exact zero.`)
+  }
+  if(number > 0) {
+    return (`${number}! is a positive number.`)
+  }
+  if(number < 0) {
+    return (`${number}! is a negative number.`)
+  }
+}
+
+console.log( checkNumber(-4) ) //"-4 is a negative number."
+```
+
+### Calling functions
+
+You call a function by using the function name and if required, pass arguments inside the parentheses `()`.
+```js
+let argument1 = "Deepest"
+let argument2 = "World"
+const greet = greeting(argument1, argument2) 
+console.log(greet) //Your console outputs: "Hello Deepest World!"
+```
+
+### nested functions
+
+
+
+## **Arrays**
 
 An array is a collection of elements/values, this can be strings, numbers, objects or even arrays themselves.
 Like most programming languages JavaScript arrays are zero-based, so the first element is at index 0.
@@ -181,7 +230,10 @@ const bigEvenNumbers = numbers.filter((number) => number % 2 === 0 && number > 3
 const three = numbers.find((number) => number === 3);
 ```
 
-## Control Structures
+## **Objects**
+
+
+## **Control Structures**
 
 A control structure is a block of code that can change the flow of a program. 
 There are three main control structures in JavaScript: `if`, `for`, and `while`. Here are a few examples:
