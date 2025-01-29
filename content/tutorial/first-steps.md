@@ -5,6 +5,70 @@ weight: 2
 ---
 # First Steps
 
+## Setup Code
+
+### Variant one (default code by dw)
+```js
+gameLoop();
+
+function gameLoop() {
+    attack();
+    setTimeout(gameLoop, 250);
+}
+
+function attack() {
+    const target = dw.findClosestMonster();
+    if (!target) {
+        return;
+    }
+
+    // index of Attack Rune on your skill bar
+    const skillIndex = 0;
+
+    // move your character to the monster
+    dw.move(target.x, target.y);
+
+    // show the target frame on the GUI
+    dw.setTarget(target.id);
+
+    // check for mana, range and GCD (global cooldown)
+    if (!dw.canUseSkill(skillIndex, target.id)) {
+        return;
+    }
+
+    dw.useSkill(skillIndex, target.id);
+}
+```
+A simple example to start coding. (Explanation for setTimeout...?)
+
+### Variant two (priority coding by Hunsrak) //Maybe I'll add this in advanced.md instead putting it here.
+```js
+let delay = 500;
+setInterval(botLoop, delay );
+
+function botLoop(){
+    console.log("delay: ",delay)
+    //delay = 500;
+    scriptFunctions()
+}
+
+function scriptFunctions(){ 
+    if(attack()) {return} // Highest priority
+    if(harvest()) {return}
+    if(movement()) {return} // Lowest priority
+    //add more script-functions here.
+}
+
+// ----- script-functions -----
+function attack() {}
+function harvest() {}
+function movement() {}
+```
+An advanced example to start coding.
+This setup is made to keep track of many different tasks.
+
+
+// remove1 start 
 You will interact with the game through the API. It is exposed as `dw` for DeepestWorld. 
 You can access it from the console in the developer tools or from a script.
 
@@ -34,6 +98,15 @@ There already are a couple of useful helper functions available:
 dw.findClosestMonster() // This will return the closest monster to your character
 dw.findClosestTree() // This will return the closest tree to your character
 ```
+// remove1 end
+
+## Simple movement
+```js
+dw.move(0,0) //your bot moves too (x,y) coordinates. 
+```
+working on...
+
+## Terrain (exploration)
 
 The world around you is made up of tiles with three coordinates: `x`, `y`, and `z`. You can access the tile you are standing on like this:
 
@@ -68,6 +141,7 @@ const terrain = {
 
 It's mostly used to make the game for appealing to the eye, but it is also be used for some gameplay mechanics.
 Like passable terrain is always `<=0` and you can only dig on `dw.enums.Terrain.DIRT`.
+
 
 ## Moving Around
 
