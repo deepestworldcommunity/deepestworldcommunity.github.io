@@ -13,8 +13,10 @@ Computer code is a set of instructions that a computer can execute. It reads inp
 Programming for DeepestWorld is primarily done in JavaScript, you can program in other languages, but the game is built with JavaScript in mind.
 
 ## Debugging
-DeepestWorld is a browser game, even the steam app or a custom electron app have access to the developer tools. 
-You can open them either by `F12` or `Ctrl + Shift + I`. In the Console tab you can try out some code.
+
+DeepestWorld is a browser game, so either in the browser, the steam app or a custom electron app you will have access to the developer tools. 
+You can open them either by `F12` (Windows), `Command + Option + I` (Mac) or `Ctrl + Shift + I` (*NIX). 
+In the Console tab you can try out some code.
 
 So lets start with the basics of programming in JavaScript. 
 Here is a simple program that outputs "Hello World!" to the console.
@@ -29,6 +31,7 @@ The text is enclosed in quotes, which is how you define a string in JavaScript.
 Strings can either be written with single quotes, double quotes, or backticks. 
 The backticks are used for string interpolation, which we will cover later.
 
+While `console` is a generic JavaScript object you can use,
 DeepestWorld has its own function to log to the game: `dw.log`. You can use it like this:
 
 ```js
@@ -39,10 +42,13 @@ To debug entities there is also the in-game "Inspector".
 This window can be opened by hovering over the entity in question and pressing `E`. 
 You will see details for this entity.  
 
-## Variables and datatypes
+## Variables and Data Types
 
-Let's move on to variables. A variable is a container for a value. You can think of it as a box that holds a value. 
-You can give it a name and assign a value to it. Here is an example:
+Let's move on to variables. A variable is like a container that holds a value. 
+You can think of it as a box where you store information.
+Variables allow you to store, update and reuse values in your code.
+
+To declare a variable in JavaScript, you can use let, const, or var. The most commonly used are let and const.
 
 ```js
 let name = "World";
@@ -54,15 +60,17 @@ We then use the variable in the `dw.log` function by enclosing it in `${}`.
 This is called string interpolation and requires the use of backticks instead of quotes.
 
 You can also change the value of a variable after it has been defined. Here is an example:
+A variable declared with let can have its value changed after it has been initialized.
 
 ```js
 let name = "World";
 dw.log(`Hello ${name}!`);
+
 name = "DeepestWorld";
 dw.log(`Hello ${name}!`);
 ```
 
-Besides strings, you can also store numbers or booleans in variables. Here is an example:
+If you don't want a variable to change after it's been assigned, use const:
 
 ```js
 const isTrue = true;
@@ -70,229 +78,289 @@ let number = 42;
 dw.log(`The answer to life, the universe, and everything is ${number}.`);
 ```
 
-The `const` keyword is used to define a constant variable. This means that the value of the variable cannot be changed after it has been defined. The `let` keyword is used to define a variable that can be changed.
-
 ## Comments
 
-The `//` is used to write comments in JavaScript. Comments are ignored by the computer and are used to explain the code to other programmers.
-There are also multi-line comments that are written between `/*` and `*/` like this.
+Comments are used to explain code and make it more readable for developers. JavaScript provides two types of comments:
+
+### Single-line Comments
+
+A single-line comment starts with //. Everything after // on the same line is ignored by JavaScript.
 
 ```js
 // This is a single-line comment
+console.log("Hello, World!"); // This is also a comment
+```
+
+### Multi-line Comments
+
+A multi-line comment is written between `/*` and `*/` and can span multiple lines.
+
+```js
 /*
 This is a multi-line comment.
 It can span multiple lines.
+Useful for explaining complex code.
 */
+```
+
+### JSDoc Comments
+
+JSDoc comments are special multi-line comments used for documentation, type hinting, and better code assistance in editors.
+
+```js
 /**
  * This is a JSDoc comment.
- * It is used to document variables, functions and classes.
- * It also can be used for type hinting.
+ * It documents variables, functions, and classes.
+ * It also provides type hinting.
  */
+
 /** @type {number} */
 const number = 42;
+
 /** @type {string} */
 let name = "World";
+
 /** @type {boolean} */
 const isTrue = true;
 ```
 
-JSDoc comments are used to document your code. They are written between `/**` and `*/`. They can be used to document variables, functions, and classes. They can also be used for type hinting, which is useful for debugging and code completion.
-JavaScript is a dynamically typed language, which means that you don't have to specify the type of a variable when you define it. However, you can use JSDoc comments to specify the type of a variable.
+JSDoc is useful because JavaScript is dynamically typed, meaning variables do not require explicit type declarations. 
+However, specifying types in JSDoc comments improves code readability and reduces errors.
 
+### JSDoc with Functions
 
 ```js
 /**
- * This is a function that takes a name as input and returns a greeting.
- * @param {string} name
- * @returns {string}
+ * Returns a greeting message.
+ * @param {string} name - The name to greet.
+ * @returns {string} The greeting message.
  */
 function greeting(name) {
-  return `Hello ${name}!`;
+  return `Hello, ${name}!`;
 }
 
 console.log(greeting("World"));
 ```
 
-The JSDoc comment above the function is completely optional, but it is good practice to document your code. It specifies that the function takes a string as input and returns a string as output.
+While JSDoc comments are optional, using them is considered good practice for maintaining clear and structured code.
 
 ## Functions
 
-Lets' move on to functions. A function is a block of code that can be called by name. It can take input, do some processing, and return a result. Here is an example:
-Function
+Functions are reusable blocks of code that perform a specific task. They can take inputs, process them, and return a result.
 
-### Declaring functions
+### Declaring Functions
 
-Using keyword function:
+Functions in JavaScript can be declared in different ways:
+
+#### Using the function Keyword
+
 ```js
-function greeting() {
-  console.log(`Hello!`);
+function greet() {
+  console.log("Hello!");
+}
+```
+
+#### Using Function Expressions
+
+```js
+const greet = function(name) {
+  console.log(`Hello, ${name}!`);
 };
 ```
 
-Using variables as functions:
-Functions can take parameters inside `()`.
+#### Using Arrow Functions (ES6+)
+
+Arrow functions provide a shorter syntax:
+
 ```js
-const greeting = function(parameter){
-  console.log(`Hello ${parameter}!`);
+const greet = (name) => {
+  console.log(`Hello, ${name}!`);
 };
 ```
 
-Using arrow functions:
-Functions can take more than one parameters.
+If the function has a single expression, you can omit the braces {} and return keyword:
+
 ```js
-const greeting = (param1, param2) => {
-  console.log(`Hello ${param1} ${param2}!`);
-};
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("World")); // "Hello, World!"
 ```
 
+### The return Statement
 
-### return statement
+Functions can return values using the return keyword:
 
-The return statement can return any value, including numbers, strings, objects, arrays, and functions.
 ```js
-function greeting(param1, param2) {
-  return `Hello ${param1} ${param2}!`
-};
-```
-Arrow functions can be written in a more concise way if they only have one statement. Here is an example:
-```js
-const greeting = (param1, param2) => `Hello ${param1} ${param2}!`;
+function sum(a, b) {
+  return a + b;
+}
+
+console.log(sum(5, 3)); // 8
 ```
 
-It is possible to write more than one return statements in a function, but only one can be encountered.
-When a return statement is encountered, the function execution stops immediately.
+A function stops executing immediately when it encounters a return statement.
+
 ```js
-function checkNumber(number){
-  if(number == 0) {
-    return (`${number} is exact zero.`)
-  };
-  if(number > 0) {
-    return (`${number} is a positive number.`)
-  };
-  if(number < 0) {
-    return (`${number} is a negative number.`)
-  };
-};
-
-console.log( checkNumber(-4) );  // "-4 is a negative number."
-```
-
-### Calling functions
-
-You call a function by using the function name and if required, pass arguments inside the parentheses `()`.
-```js
-let argument1 = "Deepest";
-let argument2 = "World";
-const greet = greeting(argument1, argument2); 
-console.log(greet); //Your console outputs: "Hello Deepest World!"
-```
-
-### nested functions
-Nested functions are functions defined within another function. An outer function can define an inner function and call it within its body.
-This allows the inner function to use variables from the outer function.
-```js
-function conversation(outerParam) {
-
-  function greeting(innerParam) {
-    console.log(`Hello ${innerParam}!`)
-  };
+function checkNumber(number) {
+  if (number === 0) {
+    return `${number} is exactly zero.`;
+  }
   
-  function goodbye(innerParam) {
-    console.log(`Goodbye ${innerParam}!`)
-  };
+  if (number > 0) {
+    return `${number} is a positive number.`;
+  }
+  
+  return `${number} is a negative number.`;
+}
 
-  greeting(outerParam);
-  goodbye(outerParam);
-};
+console.log(checkNumber(-4)); // "-4 is a negative number."
+```
 
-let argument = "World";
-conversation(argument) //outputs two lines in console: "Hello World!" and "Goodbye World!";
+### Calling Functions
+
+You call a function by using its name and passing arguments (if required):
+
+```js
+let firstName = "Deepest";
+let lastName = "World";
+console.log(greet(firstName, lastName)); // "Hello, Deepest World!"
+```
+
+### Nested Functions
+
+A nested function is a function defined inside another function. Inner functions can access variables from the outer function.
+
+```js
+function conversation(name) {
+  function greet() {
+    console.log(`Hello, ${name}!`);
+  }
+
+  function goodbye() {
+    console.log(`Goodbye, ${name}!`);
+  }
+
+  greet();
+  goodbye();
+}
+
+conversation("World");
+// Output:
+// "Hello, World!"
+// "Goodbye, World!"
 ```
 
 ## Arrays
 
-An array is a collection of elements/values, this can be strings, numbers, objects or even arrays themselves.
-Like most programming languages JavaScript arrays are zero-based, so the first element is at index 0.
-
-Here is an example:
+An array is a collection of values. It can contain strings, numbers, objects, or even other arrays.
 
 ```js
 const numbers = [4, 2, 3, 1, 0];
-console.log(numbers[0]); // returns 4
+console.log(numbers[0]); // 4
 
 const index = 3;
-console.log(numbers[index]); // returns 1
+console.log(numbers[index]); // 1
 ```
 
-In Deepest World `dw.entities` returns an array of (entity) objects.
+### Array Methods
 
-We haven't covered array functions yet, but they can help finding elements in an array. 
+JavaScript provides many useful array methods:
 
-The `filter` function is used to find elements in an array that match a condition. 
-The `find` function is used to find the first element in an array that matches a condition.
+### filter()
 
-We also introduced a bunch of operators in this example:
-* The `%` operator is used to find the remainder of a division.
-* The `==` operator is used to simply compare two values.  `console.log(1 == "1") ` returns true.
-* The `===` operator is used to deeply compare two values. `console.log(1 === "1")` returns false.
-* The `>` operator is used to compare two values.
-* The `&&` operator is used to combine two conditions.
+Filters elements based on a condition.
 
 ```js
-/** @type {number[]} */
 const numbers = [1, 2, 3, 4, 5];
 
-const evenNumbers = numbers.filter((number) => number % 2 === 0);
-const bigNumbers = numbers.filter((number) => number > 3);
-const bigEvenNumbers = numbers.filter((number) => number % 2 === 0 && number > 3);
-const three = numbers.find((number) => number === 3);
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // [2, 4]
 ```
 
-## Objects 
-Objects `{ }` are advanced arrays where elements are of key:value pairs. 
-A key is always of type string, while a value can be anything (string,number,array,object,function).
-You assign a value to the key. (Same with variables, but inside an object.)
+#### find()
+
+Finds the first element that matches a condition.
+
+```js
+const three = numbers.find(num => num === 3);
+console.log(three); // 3
+```
+
+## Objects
+
+Objects store data in key-value pairs. Keys are always strings, and values can be any data type.
+
 ```js
 const person = {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-    getFullName: function() {
-        return this.firstName + ' ' + this.lastName;
-    }
+  firstName: "John",
+  lastName: "Doe",
+  age: 25,
+  getFullName: function() {
+    return this.firstName + " " + this.lastName;
+  },
 };
 
-console.log( person.getFullName() ); //outputs: "John Doe";
+console.log(person.getFullName()); // "John Doe"
+
 let key = "age";
-console.log( person[key] ); //outputs: 25
+console.log(person[key]); // 25
 ```
-All elements from array `dw.entities` are of type (Entity) objects.
 
 ## Control Structures
 
-A control structure is a block of code that can change the flow of a program. 
-There are three main control structures in JavaScript: `if`, `for`, and `while`. Here are a few examples:
+Control structures change the flow of a program.
+
+### if Statement
+
+Executes code only if a condition is true.
 
 ```js
 let number = 5;
 if (number === 42) {
-  dw.log("The answer to life, the universe, and everything is 42.");
+  console.log("The answer to life, the universe, and everything is 42.");
 } else {
-  dw.log("That's not the answer to life, the universe, and everything.");
-}
-
-for (let i = 0; i < 5; i++) {
-  dw.log(`The current number is ${i}.`);
-}
-
-while (number > 0) {
-  dw.log(`The current number is ${number}.`);
-  number--;
+  console.log("That's not the answer.");
 }
 ```
 
-We didn't cover everything yet, but this should give you a good start. 
-If you want to learn more about JavaScript, you can check out the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript). 
-They have a lot of resources on JavaScript and web development in general.
+### for Loop
 
-But we are here to program for DeepestWorld, so lets move on to the next tutorial: [First Steps](/tutorial/first-steps).
+Repeats a block of code a specific number of times.
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log(`Iteration: ${i}`);
+}
+```
+
+### while Loop
+
+Repeats a block of code while a condition is true.
+
+```js
+let count = 3;
+while (count > 0) {
+  console.log(`Countdown: ${count}`);
+  count--;
+}
+```
+
+## Operators
+
+We introduced several operators:
+
+| Operator | Description                    | Example         | Output |
+|----------|--------------------------------|-----------------|--------|
+| %	       | Remainder	                     | 5 % 2	          | 1      |
+| ==	      | Loose equality (ignores type)  | 	1 == "1"	      | true   |
+| ===	     | Strict equality (checks type)	 | 1 === "1"	      | false  |
+| >        | Greater than                   | 5 > 3           | true   |
+| &&       | Logical AND                    | true && false   | false  |
+| \|\|     | Logical OR                     | true \|\| false | true   |
+
+## Further Learning
+
+This guide introduced comments, functions, arrays, objects, and control structures. If you want to dive deeper, check out:
+•	MDN JavaScript Documentation
+•	JavaScript Info
+
+But since we’re programming for DeepestWorld, let’s move on to the next tutorial: [First Steps](/tutorial/first-steps)
