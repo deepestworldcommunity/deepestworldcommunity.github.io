@@ -6,35 +6,26 @@ weight: 2
 
 # First Steps
 
-You will interact with the game through the API. It is exposed as `dw` for DeepestWorld.
-You can access it from the console in the developer tools or from a script.
-
+## Attacking
+To attack Monsters, first you have to get them from `dw.entities`. (array of (Entity) objects)
+Deepest world provides you a simple helper function that will find the closest monster to your character. `dw.findClosestMonster()`
 ```js
-// This will log "Hello World!" to the game log
-dw.log("Hello World!");
+const target = dw.findClosestMonster(e => e);
+//or the hard way
+function getClosestMob( filterFn ) {
+  const filterMonsters = dw.entities.filter(e => e && e.classMd === "monster");
+  if (!filterMonsters[0]) {return undefined;}
+  filterMonsters = filterMonsters.filter( filterFn );
+  const sortByDistance = filterMonsters.sort( (a,b) => dw.distance(dw.c, a) - dw.distance(dw.c, b) );
+  const closestMonster = sortByDistance[0];
+  return closestMonster; //undefined or (monster) object
+}
 ```
 
-Your character can be accessed in multiple ways:
+# Skills
 
-```js
-dw.character // This is the character object
-dw.char // This is a shorthand for the character object
-dw.c // This is a shorthand for the character object
-```
 
-Besides you, there are other entities in the game. You can access them like this:
-
-```js
-dw.entities // This is the entities object
-dw.e // This is a shorthand for the entities object
-```
-
-There already are a couple of useful helper functions available:
-
-```js
-dw.findClosestMonster() // This will return the closest monster to your character
-dw.findClosestTree() // This will return the closest tree to your character
-```
+## Movement
 
 The world around you is made up of tiles with three coordinates: `x`, `y`, and `z`. You can access the tile you are
 standing on like this:
@@ -71,7 +62,7 @@ setInterval(() => {
 This will move your character one tile to the right every second. You will either die or hit a wall pretty soon.
 But hey, you are moving your character around in the game world!
 
-## Detecting Walls
+## Detecting Walls and Holes
 
 Let's make a simple improvements to this script. We can check if there is a wall in front of us and if so, move in a
 different direction:
