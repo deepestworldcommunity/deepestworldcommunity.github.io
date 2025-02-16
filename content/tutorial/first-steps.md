@@ -23,14 +23,14 @@ dw.e // This is a shorthand for the entities object
 
 ## Movement
 
-To move around in the world you can use the `dw.move(x, y)` function.
+To move around in the world you can use the `dw.move(x, y)` function.  
 You can also stop your movement with the `dw.stop()` function.
 
 ## Attacking Monsters
 
 ### Finding
 
-To attack a monster, you first need to locate it in `dw.entities` (an array of `Entity` objects). 
+To attack a monster, you first need to find it in `dw.entities` (an array of `Entity` objects).  
 Deepest World provides a helper function to find the monster closest to your character: `dw.findClosestMonster()`.
 
 ```js
@@ -44,14 +44,14 @@ like looking for monsters with the bad property or monsters that are attacking y
 const badMonsterFilter = (e) => e.bad;
 const badMonster = dw.findClosestMonster(badMonsterFilter);
 
-const targettingMeFilter = (e) => e.target === dw.character.id;
+const targettingMeFilter = (e) => e.targetId === dw.character.id;
 const targettingMe = dw.findClosestMonster(targettingMeFilter);
 ```
 
 ### Use Skills
 
 Just finding a monster isn't enough. You also need to use skills in order to attack them, 
-this will be done with the function `dw.useSkill(skillIndex, target). 
+this will be done with the function `dw.useSkill(skillIndex, target).`
 
 ```js
 const target = dw.findClosestMonster();
@@ -63,9 +63,9 @@ if (target) {
 
 Besides having a target there are more conditions that have to be met in order to use a skill.
 
-* your character needs to be in range to use the skill: `dw.canUseSkillRange(skillIndex, target)`
-* your character will need to have enough mana to use the skill: `dw.canUseSkillCost(skillIndex)`
-* the skill has to be off cooldown: `dw.canUseSkillCooldown(skillIndex)`
+* your character needs to be in range to use the skill: `dw.isInRange(skillIndex, target)`
+* your character will need to have enough mana to use the skill: `dw.canPayCost(skillIndex)`
+* the skill has to be off cooldown: `dw.isReady(skillIndex)`
 * your character will have to target the monster (often called line of sight) - unfortunately, there is no helper function for this yet
  
 The checks that have a helper function are combined in an additional helper function: `dw.canUseSkill(skillIndex, target)`
