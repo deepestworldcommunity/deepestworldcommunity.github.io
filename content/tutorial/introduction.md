@@ -363,4 +363,5 @@ This guide introduced comments, functions, arrays, objects, and control structur
 •	MDN JavaScript Documentation
 •	JavaScript Info
 
-But since we’re programming for DeepestWorld, let’s move on to the next tutorial: [First Steps](/tutorial/first-steps)
+You can either continue in with more JavaScript concepts in the [second part of this tutorial](/tutorial/introduction-part-2)
+or move on to [First Steps](/tutorial/first-steps).
