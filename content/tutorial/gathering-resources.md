@@ -1,11 +1,13 @@
 # Gathering Resources
 
 The same process like finding monsters in Deepest World is done with gathering resources too, but different.
-Let's find the closest resource that match the criteria in `dw.isGatherable(entity)`, which returns boolean.
+Let's find the closest resource that match the criteria in `dw.isGatherable(entity)`, which returns boolean.  
+`dw.isReady()` checks if you are not on cooldown.  
+`dw.isInRange(null, resource)` checks if you're in range to the resource. `null` is used to check for gathering resources.  
 
 ```js
 const resource = dw.findClosestEntity(e => dw.isGatherable(e));
-if(resource && dw.canGather(resource)) {
+if(resource && dw.isReady() && dw.isInRange(null,resource)) {
   dw.gather(resource);
 }
 ```
@@ -25,7 +27,7 @@ function chopTree() {
   const tree = dw.findClosestTree();
   if(tree) {
     dw.move(tree.x, tree.y);
-    if(dw.canGather(tree)) {
+    if(dw.isReady() && dw.isInRange(null,resource)) {
       //dw.stop;
       dw.gather(resource);
     }
@@ -41,4 +43,4 @@ But right now, we'll use `setInterval()` for looping in this example.
 setInterval(chopTree(), 250); //repeats executing chopTree() every 250 milliseconds
 ```
 
-And that's it, Look how your bot is running from tree to tree and chopping them! Have fun coding!
+And that's it, look how your bot is running from tree to tree and chopping them! Have fun coding!
