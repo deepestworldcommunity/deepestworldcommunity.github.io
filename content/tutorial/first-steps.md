@@ -6,14 +6,6 @@ weight: 2
 
 # First Steps
 
-You will interact with the game through the API. It is exposed as `dw` for DeepestWorld.
-You can access it from the console in the developer tools or from a script.
-
-```js
-// This will log "Hello World!" to the game log
-dw.log("Hello World!");
-```
-
 Your character can be accessed in multiple ways:
 
 ```js
@@ -29,35 +21,130 @@ dw.entities // This is the entities object
 dw.e // This is a shorthand for the entities object
 ```
 
-There already are a couple of useful helper functions available:
+## Attacking monsters
+
+### Finding
+
+To attack a Monster, first you have to catch the monster in `dw.entities`. (array of (Entity) objects) 
+Deepest World provides you with a helper function that finds the closest monster to `dw.character`.  
+`dw.findClosestMonster() //returns (monster) object closest to your character`
 
 ```js
-dw.findClosestMonster() // This will return the closest monster to your character
+const target = dw.findClosestMonster();
+// option 2: Using a filter function to check for criterias
+const filterFn = (e) => Boolean(e.bad); //not all monsters are bad in Deepest World
+const monster = dw.findClosestMonster(filterFn);
+```
+
+### Use skills
+
+Just finding a monster isn't enough. You also need to use skills in order to attack them.
+`dw.useSkill(skillIndex, target) //returns <Promise> with <undefined> as resolve value` 
+
+```js
+const target = dw.findClosestMonster();
+const skillIndex = 0;
+if(target) {
+  dw.useSkill(skillIndex, target); //might throw an error
+}
+```
+
+Sometimes `dw.useSkill(skillIndex, target)` will throw an error for different reasons.
+Deepest World has a function, that will check if you're able to use the skill on target.  
+`dw.canUseSkill(skillIndex, target) //returns <boolean>`
+
+```js
+const target = dw.findClosestMonster();
+const skillIndex = 0;
+if(target && dw.canUseSkill(skillIndex, target)) {
+  dw.useSkill(skillIndex, target); //won't throw an error anymore after adding the check 
+}
+```
+
+*(Not sure to put it here or in advanced)*
+Using `async () => {await Promise(...)}` . 
+There are casting skills that can be "awaited" until they fire its projectile.
+*(Kamehamehas) if that explains it better. :D (refering on fighting style from animes like dragonball)*
+
+```js
+async function kamehameha() {
+  const target = dw.findClosestMonster();
+  const skillIndex = 0;
+  if(target && dw.canUseSkill(skillIndex, target)) {
+    await dw.useSkill(skillIndex, target);
+  }
+}
+```
+
+See [skills](https://community.deepestworld.com/game-mechanics/skills/) to know more how they can be found and learned.
+
+## Gathering resources
+
+The same process like finding monsters in Deepest World is done with gathering resources too, but different.
+Let's find the closest resource that match the criterias in `dw.isGatherable(entity)`, which returns boolean.
+
+```js
+const resource = dw.findClosestEntity(e => dw.isGatherable(e));
+if(resource && dw.canGather(resource)) {
+  dw.gather(resource);
+}
+```
+
+Or Simply look for trees with this function.
+
+```js
 dw.findClosestTree() // This will return the closest tree to your character
 ```
 
-The world around you is made up of tiles with three coordinates: `x`, `y`, and `z`. You can access the tile you are
-standing on like this:
-
-```js
-dw.getTerrainAt(dw.character.x, dw.character.y, dw.character.z) // This will return the terrain object of the tile you are standing in
-dw.getTerrainAt(dw.character.x, dw.character.y, dw.character.z - 1) // This will return the terrain object of the tile you are standing on
-```
-
-The `z-1` is used to access the tile below you. This will return the terrain type, that you can look up in
-`dw.enums.Terrain`.
-
-It's mostly used to make the game for appealing to the eye, but it is also be used for some gameplay mechanics.
-Like passable terrain is always `<=0` and you can only dig on `dw.enums.Terrain.DIRT`.
-
-## Moving Around
+## Movement
 
 You can also interact with the game world by moving around:
+
+```js
+dw.move(0,0); //your bot moves straight to (x,y) coordinates.
+dw.stop(); //stops your character moving
+```
+
+## find, move, gather and loop
+
+After you learned how to find entities, attack or gather them and how to move around Deepest World, it's time to go a step further. We'll work with an example for chopping trees.
+
+```js
+function chopTree() {
+  const tree = dw.findClosestTree();
+  if(tree) {
+    dw.move(tree.x, tree.y);
+    if(dw.canGather(tree)) {
+      //dw.stop;
+      dw.gather(resource);
+    }
+  }
+}
+```
+
+We want to execute this code multiple times, so let's add a loop.  
+There are multiple ways to loop code which are explained in *boilerplates/advanced*  
+But right now, we'll use `setInterval()` for looping in this example.
+
+```js
+setInterval(chopTree(), 250); //repeats executing chopTree() every 250 milliseconds
+```
+
+And that's it, Look how your bot is running from tree to tree and chopping them! Have fun coding!
+
+*Everything after this line I consider all topics beeing advanced, I think first-steps has done here and I think it has enough of lines for now.*
+
+*continue working here or move to boilerplates/advanced?*
+*I copied everything below here on my different advanced local file, in case to add them later in advanced/boilerplates*
+
+### Move by direction
 
 ```js
 dw.move(dw.character.x + 1, dw.character.y) // This will move your character one tile to the right
 dw.move(dw.character.x, dw.character.y + 1) // This will move your character one tile down
 ```
+
+### Moving Around
 
 Let's see how far we can get with that. When playing the game, you constantly look what to do next.
 To simulate this behavior, we can use a `setInterval` function to move our character around:
@@ -71,7 +158,22 @@ setInterval(() => {
 This will move your character one tile to the right every second. You will either die or hit a wall pretty soon.
 But hey, you are moving your character around in the game world!
 
-## Detecting Walls
+## Terrain (exploration)
+## Detecting Walls and Holes
+
+The world around you is made up of tiles with three coordinates: `x`, `y`, and `z`. You can access the tile you are standing on like this:
+
+```js
+dw.getTerrainAt(dw.character.x, dw.character.y, dw.character.z) // This will return the terrain object of the tile you are standing in
+dw.getTerrainAt(dw.character.x, dw.character.y, dw.character.z - 1) // This will return the terrain object of the tile below your character
+```
+
+The `z-1` is used to access the tile below you. This will return the terrain type, that you can look up in
+`dw.enums.Terrain`.
+
+It's mostly used to make the game for appealing to the eye, but it is also be used for some gameplay mechanics.
+Like passable terrain is always `<=0` and you can only dig on `dw.enums.Terrain.DIRT`.
+
 
 Let's make a simple improvements to this script. We can check if there is a wall in front of us and if so, move in a
 different direction:
@@ -90,8 +192,7 @@ This will just check of a wall to the right and then move down (ignoring that th
 
 ## Random Exploration
 
-Looks like the game world has changed a bit and walls appear a bit later in the game.
-So maybe let's start with a simple exploration, the random exploration.
+Let's start with a simple exploration, the random exploration.
 
 ```js
 setInterval(() => {
@@ -119,6 +220,8 @@ So choosing smaller values will eventually result in invalid moves, or even a di
 
 ## Extracting Behavior
 
+*I'm not sure about this topic*
+
 Until now, we have used the arrow function, but let's create a game loop that we can stop later on:
 
 ```js
@@ -133,7 +236,9 @@ We can also go a step further and extract the movement behavior:
 
 ```js
 function randomWalk () {
-  dw.move(dw.character.x + 2 * Math.random() - 1, dw.character.y + 2 * Math.random() - 1)
+    let randomX = 2 * Math.random() - 1;
+    let randomY = 2 * Math.random() - 1;
+    dw.move(dw.character.x + randomX , dw.character.y + randomY)
 }
 
 function gameLoop () {
@@ -144,6 +249,7 @@ setInterval(gameLoop, 250)
 ```
 
 This will make it easier to add more behavior later on. Let's add another exploration method.
+
 
 ## Straight Walk
 
@@ -178,6 +284,8 @@ Straight walk will keep your character moving in a straight line until it hits a
 Then it will move in a random direction. This will make your character explore the game world in a more structured way.
 
 ## Drunken Exploration
+
+*I'd put this topic in advanced to.*
 
 There also is a slight variation to that called "Drunken Exploration".
 It behaves like straight walk, but similar to a drunk person it fails to walk straight:
@@ -217,6 +325,7 @@ It's only a slight adjustment, but it might be a bit mathy, so let's break it do
 - `Math.cos(angle)` and `Math.sin(angle)` will give you the new direction you are moving in.
 
 This will make your character explore the game world in a more structured way, but still with a bit of randomness.
+
 
 ## Visualizing the Direction
 
