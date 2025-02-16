@@ -1,3 +1,8 @@
+---
+title: "Exploration"
+draft: false
+weight: 4
+---
 # Exploration
 
 Deepest world is made up of tiles with three coordinates: `x`, `y`, and `z`.
