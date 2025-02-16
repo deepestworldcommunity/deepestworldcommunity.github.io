@@ -51,7 +51,7 @@ const targettingMe = dw.findClosestMonster(targettingMeFilter);
 ### Use Skills
 
 Just finding a monster isn't enough. You also need to use skills in order to attack them, 
-this will be done with the function `dw.useSkill(skillIndex, target).`
+this will be done with the function `dw.useSkill(skillIndex, target)`.
 
 ```js
 const target = dw.findClosestMonster();
