@@ -1,46 +1,58 @@
 # Gathering Resources
 
-The same process like finding monsters in Deepest World is done with gathering resources too, but different.
-Let's find the closest resource that match the criteria in `dw.isGatherable(entity)`, which returns boolean.  
-`dw.isReady()` checks if you are not on cooldown.  
-`dw.isInRange(null, resource)` checks if you're in range to the resource. `null` is used to check for gathering resources.  
+Similar to finding monsters you can find resources in Deepest World. 
+There is a helper function called `dw.isGatherable(entity)` which returns a boolean if the entity can be gathered.
+There also is a helper function that is looking only for trees called `dw.findClosestTree(filter)`.
+
+```js
+const resource = dw.entities.find(e => dw.isGatherable(e));
+const closestResource = dw.findClosestEntity(e => dw.isGatherable(e));
+const closestTree = dw.findClosestTree();
+```
+
+Besides trees there are also plants and ores. On the surface ores will only be stones. To find metal ores you will have to go underground.
+Gathering can be done via calling `dw.gather(target)`, but additional checks should to be made:
+
+* `dw.isReady()` checks the global cooldown, so whether you can currently gather
+* `dw.isInRange(skillIndex, target)` checks if you are in range to gather, 
+  as long as you pass a resource as the target, the skillIndex gets ignore,
+  the API docs suggests to use `null` here
 
 ```js
 const resource = dw.findClosestEntity(e => dw.isGatherable(e));
-if(resource && dw.isReady() && dw.isInRange(null,resource)) {
+if (resource && dw.isReady() && dw.isInRange(null,resource)) {
   dw.gather(resource);
 }
 ```
 
-Or Simply look for trees with this function.
+## Find, Move, Gather And Loop
+
+A simple gathering loop can look like this:
 
 ```js
-dw.findClosestTree() // This will return the closest tree to your character
-```
-
-## find, move, gather and loop
-
-After you learned how to find entities, attack or gather them and how to move around Deepest World, it's time to go a step further. We'll work with an example for chopping trees.
-
-```js
-function chopTree() {
-  const tree = dw.findClosestTree();
-  if(tree) {
-    dw.move(tree.x, tree.y);
-    if(dw.isReady() && dw.isInRange(null,resource)) {
-      //dw.stop;
-      dw.gather(resource);
-    }
+function gatherResources() {
+  const closestResource = dw.findClosestEntity(e => dw.isGatherable(e));
+  if (!closestResource) {
+    // TODO: add some exploration code here
+    return;
   }
+  
+  if (!dw.isInRange(null, closestResource)) {
+    dw.move(closestResource.x, closestResource.y);
+    return;
+  }
+  
+  if (!dw.isReady()) {
+    return;
+  }
+  
+  dw.gather(closestResource);
 }
+
+setInterval(gatherResources, 250); //repeats executing chopTree() every 250 milliseconds
 ```
 
-We want to execute this code multiple times, so let's add a loop.  
-There are multiple ways to loop code which are explained in *boilerplates/advanced*  
-But right now, we'll use `setInterval()` for looping in this example.
-
-```js
-setInterval(chopTree(), 250); //repeats executing chopTree() every 250 milliseconds
-```
-
+So every 250 milliseconds the bot will look for the closest resource, move to it, gather it and repeat.
 And that's it, look how your bot is running from tree to tree and chopping them! Have fun coding!
+You will quickly see that the bot is just waiting for a resource to respawn and not doing anything in the meantime.
+You can add some [exploration code](/tutorial/exploration) to the bot to make it more efficient.
