@@ -1,6 +1,34 @@
-# Interacting Deepest World map
+# Exploration
 
 Deepest world is made up of tiles with three coordinates: `x`, `y`, and `z`.
+
+Exploration is a big part of the game. You can explore the world by moving around.
+
+## Hardcoded Movement
+
+```js
+const directions = {
+  north: [0, -1], 
+  east: [1, 0],
+  south: [0, 1],
+  west: [-1, 0],
+};
+
+function moveInDirection(dir) {
+  const movePoint = { x: dw.c.x, y: dw.c.y };
+  movePoint.x += directions[dir][0];
+  movepoint.y += directions[dir][1];
+  dw.move(movePoint.x, movePoint.y);
+}
+
+const directionsToMove = ["north", "east", "north", "west", "south"]
+
+let index = 0;
+setInterval(() => {
+  moveInDirection(directionsToMove[index % directionsToMove.length]);
+  index++;
+}, 1000);
+```
 
 ## Random Exploration
 
@@ -20,37 +48,7 @@ function randomWalk() {
 This will move your character in a random direction every second.
 You will explore the game world and eventually die or get stuck. But hey, you are exploring the game world! 🎉
 
-## Move by direction
-
-```js
-const directions: {
-  north: [0, -1], 
-  east: [1, 0],
-  south: [0, 1],
-  west: [-1, 0],
-}
-
-function moveInDirection(dir) {
-  let movePoint = {x: dw.c.x, y: dw.c.y};
-  movePoint.x += directions[dir][0];
-  movepoint.y += directions[dir][1];
-  dw.move(movePoint.x, movePoint.y)
-}
-
-const directionsToMove = ["nort","east","north","west","south"]
-
-let index = 0;
-setInterval(() => {
-  moveInDirection(directionsToMove[index]);
-  index++;
-  if(index === directionsToMove.length) {
-    index = 0;
-    console.log("Reached last direction to move. Resetting...");
-  }
-}, 1000);
-```
-
-## Terrain (exploration)
+## Straight Walk
 
 We can move in a straight line until we hit a wall:
 
@@ -147,16 +145,15 @@ It's only a slight adjustment, but it might be a bit mathy, so let's break it do
 
 This will make your character explore the game world in a more structured way, but still with a bit of randomness.
 
-
 ## Visualizing the Direction
 
 Since we humans tend to be visual people it might be better to show the current direction inside the game.
 You actually can draw on the game screen:
 
 ```js
-dw.on('drawOver', (ctx, cx, cy) => {
+dw.on("drawOver", (ctx, cx, cy) => {
   ctx.lineWidth = 4;
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.moveTo(dw.toCanvasX(cx), dw.toCanvasY(cy));
   ctx.lineTo(dw.toCanvasX(cx + dx), dw.toCanvasY(cy + dy));
@@ -168,4 +165,4 @@ This will draw a red line in the direction your character is moving in.
 It's not perfect, but it will give you a rough idea of where your character is going.
 If you want to learn more about what's possible with the Canvas2D API, you can check out
 the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
-There also is a `drawUnder` event that will draw under the game world, which we will come back to soon.
+There also is a `drawUnder` event that will draw under the character and entities.
