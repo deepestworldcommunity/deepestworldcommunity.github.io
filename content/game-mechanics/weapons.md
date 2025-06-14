@@ -4,23 +4,6 @@ draft: false
 ---
 # Weapons
 
-## One Handed
-* axe
-* boomerang
-* dagger
-* mace
-* scepter
-* spear
-* staff
-* sword
-* wand
-
-## Two Handed
-* bow
-* crossbow
-
-  
----
-
-* TODO: explain weapon differences
-* TODO: explain local vs. global mods and what to focus on
+Currently, there are only gloves called as weapons.  
+You can wear two of them or one weapon in `dw.c.gear.mainHand` and one shield in `dw.c.gear.offHand`.  
+They can have different [mods](https://community.deepestworld.com/game-mechanics/mods/) to increase your stats.
