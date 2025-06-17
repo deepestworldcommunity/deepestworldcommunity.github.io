@@ -5,34 +5,25 @@ draft: false
 # Items
 
 * armor
-    * helmet
-    * chest-plate
-    * gloves
-    * boots
-    * shield
+   * helmet
+   * chest-plate
+   * boots
+   * bracers
+   * shield
 * weapons
-    * axe
-    * boomerang
-    * bow
-    * crossbow
-    * dagger
-    * mace
-    * scepter
-    * spear
-    * staff
-    * sword
-    * wand
+    * gloves
 * accessories
-    * amulet
-    * ring
-    * belt
-* gems
-    * diamond
-    * emerald
-    * ruby
-    * sapphire
-    * topaz
-* skills
+   * amulet
+   * ring
+   * belt
+* skill books
 * crafting materials
-* stations
-* boxes
+   * wood
+   * herb
+   * rock
+   * ore
+   * hide
+* craftable stations
+   * workbench
+   * bed
+* boxes (event items)
