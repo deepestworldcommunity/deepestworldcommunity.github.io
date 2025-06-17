@@ -60,21 +60,22 @@ dw.on('drawUnder', (ctx, cx, cy) => {
 Since we humans tend to be visual people it might be better to show the current direction inside the game.
 
 ```js
-let angle = Math.atan2(dw.c.dy, dw.c.dx)
-dx = Math.cos(angle) 
-dy = Math.sin(angle)
+const radius = 1; //dw-unit
+const angle = Math.atan2(dw.c.dy, dw.c.dx);
+const lookAtX = Math.cos(angle) * radius + dw.c.x;
+const lookAtY = Math.sin(angle) * radius + dw.c.y;
 
 dw.on("drawOver", (ctx, cx, cy) => {
   ctx.lineWidth = 4;
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.moveTo(dw.toCanvasX(cx), dw.toCanvasY(cy));
-  ctx.lineTo(dw.toCanvasX(cx + dx), dw.toCanvasY(cy + dy));
+  ctx.lineTo(dw.toCanvasX(lookAtX), dw.toCanvasY(lookAtY));
   ctx.stroke();
 });
 ```
 
-This will draw a red line in the direction your character is looking at.
+This will draw a red line in a radius of 1 dw-unit in the direction your character is looking at.
 
 If you want to learn more about what's possible with the Canvas2D API, you can check out the  
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
