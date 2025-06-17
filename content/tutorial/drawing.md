@@ -60,18 +60,17 @@ dw.on('drawUnder', (ctx, cx, cy) => {
 Since we humans tend to be visual people it might be better to show the current direction inside the game.
 
 ```js
-const radius = 1; //dw-unit
-const angle = Math.atan2(dw.c.dy, dw.c.dx);
-const lookAtX = Math.cos(angle) * radius + dw.c.x;
-const lookAtY = Math.sin(angle) * radius + dw.c.y;
-
 dw.on("drawOver", (ctx, cx, cy) => {
-  ctx.lineWidth = 4;
-  ctx.fillStyle = "red";
-  ctx.beginPath();
-  ctx.moveTo(dw.toCanvasX(cx), dw.toCanvasY(cy));
-  ctx.lineTo(dw.toCanvasX(lookAtX), dw.toCanvasY(lookAtY));
-  ctx.stroke();
+    const radius = 1; //dw-unit
+    const angle = Math.atan2(dw.c.dy, dw.c.dx);
+    const lookAtX = Math.cos(angle) * radius + dw.c.x;
+    const lookAtY = Math.sin(angle) * radius + dw.c.y;
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "red"
+    ctx.beginPath();
+    ctx.moveTo(dw.toCanvasX(cx), dw.toCanvasY(cy));
+    ctx.lineTo(dw.toCanvasX(lookAtX), dw.toCanvasY(lookAtY));
+    ctx.stroke();
 });
 ```
 
