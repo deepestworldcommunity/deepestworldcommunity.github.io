@@ -1,9 +1,9 @@
 ---
-title: "Introduction Part 2"
+title: "Javascript Intermediate"
 draft: false
 weight: 1
 ---
-# Introduction Part 2
+# Javascript Intermediate
 
 ## Try - Catch
 
@@ -35,7 +35,7 @@ async function asyncAttack() {
   if (value === undefined) {
     return 'Attacking successful!';
   }
-  throw Error('Attacking failed for some reason.');
+  console.error('Attacking failed for some reason.');
 }
 ```
 
@@ -48,10 +48,18 @@ Calling without Parentheses:
 When you call a function without parentheses (e.g., myFunction), you are not executing the function. Instead, you are referring to the function itself. This is often used when you want to pass the function as a reference to another function or method, such as in event handling or as a callback.
 
 ```js
-setInterval(gameLoop, 1000) //setTimeout() is the call while gameLoop is referred.
+setInterval(gameLoop, 500) //setTimeout() is the call, while gameLoop is referred.
+
+function gameLoop() {
+  attack()
+}
 ```
 
-*Better example?*
+```js
+const filterMonster = (e) => {e.bad || e.targetId === dw.character.id}
+
+const target = dw.findClosestMonster(filterMonster)
+```
 
 ## Timers
 
@@ -89,7 +97,8 @@ function gameLoop() {
 
 ### sleep
 
-Using await with setTimeout directly is not possible because `setTimeout` returns a number, not a promise. To use `setTimeout` in an async function with await, you need to wrap setTimeout in a promise.
+Using await with setTimeout directly is not possible because `setTimeout` returns a number (like `setInterval` does), not a promise.  
+To use `setTimeout` in an async function with await, you need to wrap setTimeout in a promise.
 
 ```js
 const sleep = async (ms=500) => new Promise(resolve => setTimeout(resolve,ms))
@@ -106,13 +115,33 @@ async function gameLoop() {
 
 ### Adjusting the Timing
 
-You might have noticed that doing so every second is a bit slow. You can speed it up by changing the interval to 250ms.
+You might have noticed that doing so every second is a bit slow. You can speed it up by changing the delay to 250ms.
 
-You can choose any value you like, but keep in mind that the game will only update the entities every 50ms.
+You can choose any value you like, but keep in mind that the game will only update every 50ms.
 So choosing smaller values will eventually result in invalid moves, or even a disconnect.
+
+The delay for setTimeout timer function during (recursive) looping can be changed. 
 
 ```js
 let delay = 1000;
-delay = 250
+gameLoop();
+
+function gameLoop() {
+  attack();
+  delay = 250; //resets delay
+  setTimeout(gameLoop, delay);
+}
+```
+
+The delay in setInterval timer function cannot be changed on repeating intervals once you call it.
+
+```js
+let delay = 1000;
+delay = 250;
 setInterval(gameLoop, delay)
+
+function gameLoop() {
+  attack()
+  delay = 2000 //won't work
+}
 ```
