@@ -1,9 +1,9 @@
 ---
-title: "Introduction"
+title: "Javascript Basic"
 draft: false
 weight: 1
 ---
-# Introduction
+# Javascript Basic
 
 So you want to learn how to make a game AI? Or maybe programming in general?
 Already know JavaScript, then head over to the [First Steps](/tutorial/first-steps).
