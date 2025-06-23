@@ -4,20 +4,7 @@ draft: false
 ---
 # Tools
 
-The top of the two action bars at the bottom of the screen is the toolbar. Tools can be placed here to be used.
-All tools can be crafted at the workbench.
-
-There is currently no benefit to upgrading your tools to a higher level, as they do not allow bonuses.
-
-Currently, all tools except for the axe and pickaxe use dw.constants.INTERACT_RANGE for their range. The axe and pickaxe use dw.constants.RANGE_MELEE_BASE
-
-## Axe
-
-An axe is required for chopping trees.
-
-## Pickaxe
-
-The pickaxe allows for the collection of ore from nodes.
+You can switch to tool bar by clicking on the arrow button on the right next to skill bar.
 
 ## Hammer
 
@@ -27,10 +14,10 @@ The hammer is used to pick up building pieces.
 
 The wrench is used to repair building pieces and crafting stations.
 
-# Shovel
+## Shovel
 
-With the shovel you can dig holes in plots you own.
+With the shovel you can dig holes and walls in plots you own. Use mousewheel to switch between digging walls or holes.
 
-# Bucket
+## Sledgehammer
 
-The bucket was used to water plants, but is currently not used for anything.
+The sledgehammer allows you to buy or sell plots. Use mouse wheel to switch between buy/sell mode.
