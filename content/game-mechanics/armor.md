@@ -38,16 +38,25 @@ Different material tiers have different scaling in the base stats, these current
 
 ## Slots
 
-There are currently six armor slots, including the shield that is available while using one-handed weapons (all, except bow & crossbow).
+There are currently ten armor slots, including the shield that is available while using one-handed weapons.
 
 * helmet
 * chest-plate
-* gloves
 * boots
-* belt
+* braces
+* gloves
 * shield
 
 The shield is special here: though you gain the stats of the shield, you'll lose damage at the same time. So it's not always beneficial to equip a shield.
+
+## Accessories
+
+Accessories are primarily a source of extra mods and do not have anything in the way of other stats.
+Currently, there is no way to craft either rings, amulets or belts, which are only acquired as drops.
+
+* amulet
+* ring (2x)
+* belt
 
 ---
 
