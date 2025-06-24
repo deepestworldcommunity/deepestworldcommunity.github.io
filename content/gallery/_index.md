@@ -4,6 +4,6 @@ draft: false
 weight: 5
 ---
 
-![hunting animal by avoiding its point of view](/images/huntingAnimal.png)
+![hunting animal by avoiding its point of view](huntingAnimal.png)
 
-![pathfinding first approach](/images/pathfindingToBed.png)
+![pathfinding first approach](pathfindingToBed.png)
